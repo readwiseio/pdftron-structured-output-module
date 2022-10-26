@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+BUILD_DIR=$1
+
+# install structured output module
+
+mkdir -p "$1/pdftron/"
+cp "pdftron/StructuredOutput" "$1/pdftron/StructuredOutput"
+echo "-----> pdftron-buildpack: Installed to app/pdftron"
+
+# install pdftron python package
+
+if [ ! -f "$BUILD_DIR/.heroku/python/bin/pip" ]; then
+    exit 1
+fi
+
+/app/.heroku/python/bin/pip install PDFNetPython3 --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --progress-bar off 2>&1
+
+# check for failure ??
+
+exit 0
