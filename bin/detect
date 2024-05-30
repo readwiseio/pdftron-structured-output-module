@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "recursing-fermat"
+echo "pdftron-structured-output-module"
 exit 0
